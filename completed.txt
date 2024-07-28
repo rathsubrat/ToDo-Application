@@ -1,0 +1,24 @@
+1. Login System
+        a . Super User Login(After Successful Login Return All Task)
+        b . User Login(After Successful Login Return User Wise Task)
+2. Register User
+3. Task Creation
+4. Update Description
+5. Update Status
+6. Update Task Name
+7. Update File Upload
+8. Delete Task
+9. Store Multiple Category Into Database
+10. List of Users
+11. Update Start Date and End Date
+12. User Deletion
+13. User Details Update
+14. Create Card
+15. Update Card
+16. View all card name
+17. Cover Update in Task
+18. Task Detail View by Task ID
+19. All Tasks View
+20. Download Attachment URL
+21. added functionality role, techsack,proficiency to User.userprofile
+22. Created @manager_required decorator
