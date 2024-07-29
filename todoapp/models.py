@@ -4,6 +4,7 @@ from django.db.models import Count
 from django.db.models import JSONField
 # Create your models here.
 
+
 class Project(models.Model):
     projname = models.CharField(max_length=100)
     assignedTo = models.ManyToManyField(User, related_name='assigned_project')
@@ -60,8 +61,8 @@ class Task(models.Model):
                 # Append the new done_date as a string
                 self.ETA.append(self.done_date.strftime("%Y-%m-%d"))
         super(Task, self).save(*args, **kwargs)
-    # def __str__(self):
-    #     return self.name
+    def __str__(self):
+        return self.taskName
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete = models.CASCADE)
@@ -69,17 +70,24 @@ class UserProfile(models.Model):
     proficiency = models.CharField(max_length=50,null=True,blank=True,
                                    choices=[('Basic', 'Basic'),('Good', 'Good'), ('Excellent', 'Excellent')],default=('Basic'))
     tech_stack = models.CharField(max_length=50,null=True,blank=True)
-    # intials = models.CharField(max_length=50,null=True,blank=True)
     role = models.CharField(max_length=50,null=True,blank=True,
                               choices=[('UI/UX Designer','UI/UX Designer'),('Backend Developer ','Backend Developer'),('Full Stack Developer ','Full Stack Developer'),('Cloud Developer ','Cloud Developer')])
     designation = models.CharField(max_length=50,
                               choices=[('User', 'User'),('Manager', 'Manager'), ('Team Lead', 'Team Lead')],default=('User'))
     wallet_money = models.IntegerField(null=True,blank=True,default=0)
 
-    # def __str__(self):
-    #    return self.user
+class Message(models.Model):
+    task = models.ForeignKey(Task,on_delete=models.CASCADE)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    message = models.TextField(max_length=5000)
+    date_time = models.DateTimeField()
 
 
-    # current_status = models.CharField(max_length=30, default='Not Started')
+
+
+
+
+
+
 
 

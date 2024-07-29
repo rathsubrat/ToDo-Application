@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Task,Card,UserProfile,Project
+from .models import Task,Card,UserProfile,Project,Message
 from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin
 # Register your models here.
@@ -34,4 +34,7 @@ class ProjectAdmin(admin.ModelAdmin):
     filter_horizontal = ('assignedTo',)
 
 admin.site.register(Project,ProjectAdmin)
+class MessageAdmin(admin.ModelAdmin):
+    list_display = ['id','user','task']
+admin.site.register(Message,MessageAdmin)
 

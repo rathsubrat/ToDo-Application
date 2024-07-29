@@ -33,6 +33,8 @@ urlpatterns = [
     path('reset-password/<uidb64>/<token>/', PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     path('projectper/', ProjectListAPIView.as_view(), name='project_list_api'),
     path('user/<int:user_id>/tasks/', UserProjectTasksView.as_view(), name='user-project-tasks'),
+    path('project/tasks/<str:projname>/', ProjectTasksView.as_view(), name='project-tasks'),
+    path('comment/tasks/<str:task_name>/', TaskMessagesView.as_view(), name='tasks_Comment'),
 
 
 

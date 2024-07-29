@@ -1,7 +1,7 @@
 # serializers.py
 from rest_framework import serializers
 from django.contrib.auth.models import User,Group
-from .models import Task,Card,UserProfile,Project
+from .models import Task,Card,UserProfile,Project,Message
 from django.contrib.auth.password_validation import validate_password
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.http import urlsafe_base64_decode
@@ -262,3 +262,21 @@ class PasswordResetConfirmSerializer(serializers.Serializer):
         password = self.validated_data['new_password']
         self.user.set_password(password)
         self.user.save()
+
+
+class MessageSerializer(serializers.ModelSerializer):
+
+    task = serializers.SlugRelatedField(
+        queryset=Task.objects.all(),
+        slug_field='taskName',
+        many=False
+    )
+    user = serializers.SlugRelatedField(
+        queryset=User.objects.all(),
+        slug_field='username',
+        many=False
+    )
+
+    class Meta:
+        model = Message
+        fields = "__all__"
