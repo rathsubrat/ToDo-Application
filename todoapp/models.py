@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User,Group
 from django.db.models import Count,JSONField
-
+from datetime import datetime,timedelta
 # Create your models here.
 
 
@@ -60,7 +60,18 @@ class Task(models.Model):
                     self.ETA = []
                 # Append the new done_date as a string
                 self.ETA.append(self.done_date.strftime("%Y-%m-%d"))
+
+        # Set priority to high if ETA is within 3 days
+        if self.ETA:
+            today = datetime.now().date()
+            for eta_date_str in self.ETA:
+                eta_date = datetime.strptime(eta_date_str, "%Y-%m-%d").date()
+                if (eta_date - today).days <= 3:
+                    self.priority = self.Priority_High
+                    break
+
         super(Task, self).save(*args, **kwargs)
+
     def __str__(self):
         return self.taskName
 

@@ -188,7 +188,7 @@ class LoginView(APIView):
         else:
             return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
 class UpdateDateView(generics.UpdateAPIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
     queryset = Task.objects.all()
     serializer_class = MyModelSerializer
 class UpdateDescriptionView(generics.UpdateAPIView):
