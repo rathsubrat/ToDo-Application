@@ -466,4 +466,10 @@ class TaskMessagesView(APIView):
         serializer = MessageSerializer(messages, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
+class UserTaskView(APIView):
+    def get(self, request, user_name, format=None):
+        user = get_object_or_404(User, username=user_name)
+        task = Task.objects.filter(assignedTo=user)
+        serializer = TaskSerializer(task, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 

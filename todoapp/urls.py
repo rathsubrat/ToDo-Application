@@ -4,7 +4,7 @@ from django.conf import settings
 from todoapp.views import *
 urlpatterns = [
     path('api/create-task/', create_task, name='api-create-task'),#for creating task
-    path('tasks/<int:pk>/', TaskDeleteView.as_view(), name='task-delete'),#delting task by id
+    path('tasks/<int:pk>/', TaskDeleteView.as_view(), name='task-delete'),#delete task by id
     path('api/login/', LoginView.as_view(), name='login'),# user and super user login
     path('api/register/', register, name='api-register'),# user and super user SignUp
     path('users/', UserListView.as_view(), name='user_name_list'),# user and super user Details
@@ -31,10 +31,11 @@ urlpatterns = [
     path('projects/', ProjectListView.as_view(), name='project_name'),# All Project Name and assigned Manager
     path('forgot_password/<str:username>/', ForgotPasswordView.as_view(), name='forgot_password'),
     path('reset-password/<uidb64>/<token>/', PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
-    path('projectper/', ProjectListAPIView.as_view(), name='project_list_api'),
-    path('user/<int:user_id>/tasks/', UserProjectTasksView.as_view(), name='user-project-tasks'),
-    path('project/tasks/<str:projname>/', ProjectTasksView.as_view(), name='project-tasks'),
-    path('comment/tasks/<str:task_name>/', TaskMessagesView.as_view(), name='tasks_Comment'),
+    path('projectper/', ProjectListAPIView.as_view(), name='project_list_api'),#Find Percentage Completion in project and Task
+    path('user/<int:user_id>/tasks/', UserProjectTasksView.as_view(), name='user-project-tasks'),#Users aligned with Task
+    path('project/tasks/<str:projname>/', ProjectTasksView.as_view(), name='project-tasks'),#Filter Task Project Wise
+    path('comment/tasks/<str:task_name>/', TaskMessagesView.as_view(), name='tasks_Comment'),#Comment App
+    path('user/tasks/<str:user_name>/', UserTaskView.as_view(), name='tasks_user'),#User Specific Tasks
 
 
 
