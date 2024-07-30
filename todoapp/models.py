@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User,Group
-from django.db.models import Count
-from django.db.models import JSONField
+from django.db.models import Count,JSONField
+
 # Create your models here.
 
 
