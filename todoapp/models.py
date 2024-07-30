@@ -66,7 +66,7 @@ class Task(models.Model):
             today = datetime.now().date()
             for eta_date_str in self.ETA:
                 eta_date = datetime.strptime(eta_date_str, "%Y-%m-%d").date()
-                if (eta_date - today).days <= 3:
+                if (eta_date - today).days <= 2:
                     self.priority = self.Priority_High
                     break
 
