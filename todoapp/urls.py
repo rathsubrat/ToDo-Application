@@ -32,10 +32,10 @@ urlpatterns = [
     path('forgot_password/<str:username>/', ForgotPasswordView.as_view(), name='forgot_password'),
     path('reset-password/<uidb64>/<token>/', PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     path('projectper/', ProjectListAPIView.as_view(), name='project_list_api'),#Find Percentage Completion in project and Task
-    path('user/<int:user_id>/tasks/', UserProjectTasksView.as_view(), name='user-project-tasks'),#Users aligned with Task
+    path('user/<int:user_id>/tasks/', UserProjectTasksView.as_view(), name='user-project-tasks'),#Users aligned with Task search by usign user id
     path('project/tasks/<str:projname>/', ProjectTasksView.as_view(), name='project-tasks'),#Filter Task Project Wise
     path('comment/tasks/<str:task_name>/', TaskMessagesView.as_view(), name='tasks_Comment'),#Comment App
-    path('user/tasks/<str:user_name>/', UserTaskView.as_view(), name='tasks_user'),#User Specific Tasks
+    path('user/tasks/<str:user_name>/', UserTaskView.as_view(), name='tasks_user'),#User Specific Tasks search by using username
 
 
 
