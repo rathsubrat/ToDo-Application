@@ -36,6 +36,7 @@ urlpatterns = [
     path('project/tasks/<str:projname>/', ProjectTasksView.as_view(), name='project-tasks'),#Filter Task Project Wise
     path('comment/tasks/<str:task_name>/', TaskMessagesView.as_view(), name='tasks_Comment'),#Comment App
     path('user/tasks/<str:user_name>/', UserTaskView.as_view(), name='tasks_user'),#User Specific Tasks search by using username
+    path('api/send_message/', send_message, name='api_send_messafe'),#for storing message
 
 
 

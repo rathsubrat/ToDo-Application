@@ -276,6 +276,10 @@ class MessageSerializer(serializers.ModelSerializer):
         slug_field='username',
         many=False
     )
+    reply_to = serializers.PrimaryKeyRelatedField(
+        queryset=Message.objects.all(),
+        many=False
+    )
 
     class Meta:
         model = Message
