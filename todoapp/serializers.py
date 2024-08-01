@@ -284,3 +284,8 @@ class MessageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Message
         fields = "__all__"
+
+        def get_replies(self, obj):
+            if obj.replies.exists():
+                return MessageSerializer(obj.replies.all(), many=True).data
+            return []

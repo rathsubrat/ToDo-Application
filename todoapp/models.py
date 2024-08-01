@@ -94,8 +94,7 @@ class Message(models.Model):
     date_time = models.DateTimeField(auto_now_add=True)
     is_flagged = models.BooleanField('flagged',default=False)
     reply_to = models.ForeignKey('self', null=True, blank=True, on_delete=models.CASCADE, related_name='replies')
-    def __str__(self):
-        self.user
+
 
 
 
